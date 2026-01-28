@@ -16,10 +16,10 @@ class Program
             string nome = Console.ReadLine();
 
             Console.WriteLine("Digite o preço do produto:");
-            double preco = double.Parse(Console.ReadLine());
+            double preco = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine("Digite a quantidade em estoque:");
-            int quantidade = int.Parse(Console.ReadLine());
+            int quantidade = Convert.ToInt32(Console.ReadLine());
             
             Produto produto = new Produto(nome, preco, quantidade);
             if (!string.IsNullOrWhiteSpace(nome))
