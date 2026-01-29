@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("api-piloto")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("try-catch")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+50c1f48932baf7626cafafb7397cb659abd5fc28")]
-[assembly: System.Reflection.AssemblyProductAttribute("api-piloto")]
-[assembly: System.Reflection.AssemblyTitleAttribute("api-piloto")]
+[assembly: System.Reflection.AssemblyProductAttribute("try-catch")]
+[assembly: System.Reflection.AssemblyTitleAttribute("try-catch")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.

@@ -1,0 +1,15 @@
+C:\Users\aluno\Desktop\bootcamp_dtt\dia2\try-catch\bin\Debug\net10.0\try-catch.exe
+C:\Users\aluno\Desktop\bootcamp_dtt\dia2\try-catch\bin\Debug\net10.0\try-catch.deps.json
+C:\Users\aluno\Desktop\bootcamp_dtt\dia2\try-catch\bin\Debug\net10.0\try-catch.runtimeconfig.json
+C:\Users\aluno\Desktop\bootcamp_dtt\dia2\try-catch\bin\Debug\net10.0\try-catch.dll
+C:\Users\aluno\Desktop\bootcamp_dtt\dia2\try-catch\bin\Debug\net10.0\try-catch.pdb
+C:\Users\aluno\Desktop\bootcamp_dtt\dia2\try-catch\obj\Debug\net10.0\try-catch.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aluno\Desktop\bootcamp_dtt\dia2\try-catch\obj\Debug\net10.0\try-catch.AssemblyInfoInputs.cache
+C:\Users\aluno\Desktop\bootcamp_dtt\dia2\try-catch\obj\Debug\net10.0\try-catch.AssemblyInfo.cs
+C:\Users\aluno\Desktop\bootcamp_dtt\dia2\try-catch\obj\Debug\net10.0\try-catch.csproj.CoreCompileInputs.cache
+C:\Users\aluno\Desktop\bootcamp_dtt\dia2\try-catch\obj\Debug\net10.0\try-catch.sourcelink.json
+C:\Users\aluno\Desktop\bootcamp_dtt\dia2\try-catch\obj\Debug\net10.0\try-catch.dll
+C:\Users\aluno\Desktop\bootcamp_dtt\dia2\try-catch\obj\Debug\net10.0\refint\try-catch.dll
+C:\Users\aluno\Desktop\bootcamp_dtt\dia2\try-catch\obj\Debug\net10.0\try-catch.pdb
+C:\Users\aluno\Desktop\bootcamp_dtt\dia2\try-catch\obj\Debug\net10.0\try-catch.genruntimeconfig.cache
+C:\Users\aluno\Desktop\bootcamp_dtt\dia2\try-catch\obj\Debug\net10.0\ref\try-catch.dll
