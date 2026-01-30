@@ -1,10 +1,10 @@
-﻿using System;
+﻿
 
+Console.WriteLine("");
 
-class Programa
-{
-    static void Main()
-    {
-        
-    }
-}
+Mina mina = new Mina();
+
+Minerio minerio = mina.acessarExtrairMinerio();
+//Minerio minerio = mina.extrairMinerio();
+
+Console.WriteLine(minerio.tipo);
