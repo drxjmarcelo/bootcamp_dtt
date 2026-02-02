@@ -55,7 +55,7 @@ class Programa
                     }
 
                     Console.WriteLine("\n=== LISTA DE VISITANTES ===");
-
+                    //Services.ListarDados();
                     foreach (Visitante v in visitantes)
                     {
                         Console.WriteLine("---------------------------");
@@ -176,7 +176,18 @@ class Programa
 
                 //auto explicativo 
                 default:
-                    Console.WriteLine("Opção inválida");
+                    try
+                    {
+                        Console.WriteLine("Opção inválida");
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Erro! Digite apenas números.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Erro! Formato Inválido! {ex.Message}");
+                    }
                 break;
             }
         }

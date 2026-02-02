@@ -1,0 +1,15 @@
+C:\Users\aluno\Desktop\bootcamp_dtt\dia4\obj\Debug\net10.0\dia4.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aluno\Desktop\bootcamp_dtt\dia4\obj\Debug\net10.0\dia4.AssemblyInfoInputs.cache
+C:\Users\aluno\Desktop\bootcamp_dtt\dia4\obj\Debug\net10.0\dia4.AssemblyInfo.cs
+C:\Users\aluno\Desktop\bootcamp_dtt\dia4\obj\Debug\net10.0\dia4.csproj.CoreCompileInputs.cache
+C:\Users\aluno\Desktop\bootcamp_dtt\dia4\obj\Debug\net10.0\dia4.sourcelink.json
+C:\Users\aluno\Desktop\bootcamp_dtt\dia4\bin\Debug\net10.0\dia4.exe
+C:\Users\aluno\Desktop\bootcamp_dtt\dia4\bin\Debug\net10.0\dia4.deps.json
+C:\Users\aluno\Desktop\bootcamp_dtt\dia4\bin\Debug\net10.0\dia4.runtimeconfig.json
+C:\Users\aluno\Desktop\bootcamp_dtt\dia4\bin\Debug\net10.0\dia4.dll
+C:\Users\aluno\Desktop\bootcamp_dtt\dia4\bin\Debug\net10.0\dia4.pdb
+C:\Users\aluno\Desktop\bootcamp_dtt\dia4\obj\Debug\net10.0\dia4.dll
+C:\Users\aluno\Desktop\bootcamp_dtt\dia4\obj\Debug\net10.0\refint\dia4.dll
+C:\Users\aluno\Desktop\bootcamp_dtt\dia4\obj\Debug\net10.0\dia4.pdb
+C:\Users\aluno\Desktop\bootcamp_dtt\dia4\obj\Debug\net10.0\dia4.genruntimeconfig.cache
+C:\Users\aluno\Desktop\bootcamp_dtt\dia4\obj\Debug\net10.0\ref\dia4.dll
