@@ -31,3 +31,15 @@
 - Busca visitantes por nome
 - Ordena visitantes por ID
 - Filtra primeira visita
+
+## Comandos: 💻
+### Rodar no terminal dentro do VSCode
+-dotnet run
+### Controlar Menu:
+- 1 - Cadastrar visitantes
+- 2 - Listar visitantes
+- 3 - Buscar visitante por nome
+- 4 - Registrar saída
+- 5 - Ordenar por ID
+- 6 - Filtrar primeira visita
+- 0 - Sair
