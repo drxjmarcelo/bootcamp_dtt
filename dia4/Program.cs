@@ -5,7 +5,7 @@ class Programa
 {
     public static void Main()
     {
-        Conta conta = new Conta("Joao", "69", 0, 1, true, 350);
+        Conta conta = new Conta("Joao", "69", 1600, 1, true, 350);
 
         int opcao = -1;
         while (opcao != 5)
@@ -19,47 +19,47 @@ class Programa
             Console.WriteLine("4 - VerChequeEspecial");
             Console.WriteLine("5 - Sair");
             
-            opcao = Convert.ToInt32(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out opcao))
+            {
+                Console.WriteLine("Opção inválida!");
+                Console.WriteLine("\n--Pressione ENTER para voltar ao menu--");
+                Console.ReadLine();
+                continue;
+            }
 
             switch (opcao)
             {
                 //Ver saldo
                 case 1:
-                {
-                    conta.VerSaldo();
+                    Servicos.VerSaldo(conta);
                     break;
-                }
-                
+
                 //Sacar
                 case 2:
-                {
-                    conta.Sacar();
+                    Servicos.Sacar(conta);
                     break;
-                }
 
                 //Depositar
                 case 3:
-                {
-                    conta.Depositar();
+                    Servicos.Depositar(conta);
                     break;
-                }
                 
                 //VerChequeEspeial
                 case 4:
-                {
-                    conta.VerChequeEspecial();
+                    Servicos.VerChequeEspecial(conta);
                     break;
-                }
 
                 //Sair
                 case 5:
                     Console.WriteLine("Saindo...");
-                break;
+                    break;
                 
-                //Opção padrao
+                //Opção padrão
                 default:
                     Console.WriteLine("Opção inválida!");
-                break;
+                    Console.WriteLine("\n--Pressione ENTER para voltar ao menu--");
+                    Console.ReadLine();
+                    break;
             }
         }
         
