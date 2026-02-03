@@ -23,4 +23,5 @@ Repositório dos exercícios do treinamento de .NET da Deloitte no Porto Digital
 - Validação de cadastro e remoção de produtos (com try/catch)
 - Sistema de controle de check-in de visitantes
 ### Dia 4:
-- *pendente*
+- Criação de sistema de banco.
+- SOLID
