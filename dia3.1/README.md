@@ -34,7 +34,7 @@
 
 ## Comandos: 💻
 ### Rodar no terminal dentro do VSCode
--dotnet run
+- dotnet run
 ### Controlar Menu:
 - 1 - Cadastrar visitantes
 - 2 - Listar visitantes
@@ -43,3 +43,4 @@
 - 5 - Ordenar por ID
 - 6 - Filtrar primeira visita
 - 0 - Sair
+
