@@ -21,7 +21,7 @@
 ## Classes: 🟢
 ### Programa 💾
 - Classe principal
-- Possui menu para controlar as classes dependentes
+- Possui menu (switch/case) para chamar os metodos das classes dependentes
 ### Visitantes 📋
 - Define modelo de dados dos visitantes
 - Registra Saída.
