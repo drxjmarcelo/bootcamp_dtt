@@ -4,8 +4,6 @@
 Repositório dos exercícios do treinamento de .NET da Deloitte no Porto Digital 🔵
 
 
-
-
 ## Conteúdos📚:
 - Controle de versionamento com Git 🟠
 - Uso de APIs
@@ -25,3 +23,5 @@ Repositório dos exercícios do treinamento de .NET da Deloitte no Porto Digital
 ### Dia 4:
 - Criação de sistema de banco.
 - SOLID
+### Dia 5:
+- Criação de documentação de projetos 📄
