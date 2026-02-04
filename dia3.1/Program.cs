@@ -35,41 +35,34 @@ class Programa
             {
                 //Cadastro
                 case 1:
-                {
                     servicos.Cadastrar();
                     break;
-                }
 
                 //Listar
-                case 2:
-                {
+                case 2: 
                     servicos.Listar();
                     break;
-                }
+
                 // Buscar
                 case 3:
-                {
                     servicos.Buscar();
                     break;
-                }
+
                 //Saída
                 case 4:
-                {
                     servicos.RegistrarSaida();
                     break;
-                }
+                
                 //Id list
                 case 5:
-                {
                     servicos.OrdenarID();
                     break;
-                }
+                
                 //Listar visitantes por primeira vez
                 case 6:
-                {
                     servicos.FiltrarPVisita();
                     break;
-                }
+            
                 //Sair do Console...
                 case 0:
                     Console.WriteLine("Saindo...");
