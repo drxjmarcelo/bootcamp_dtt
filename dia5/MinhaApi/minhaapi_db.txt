@@ -1,0 +1,31 @@
+create schema if not exist public;
+
+drop table if exists public.lotes.minerio cascade;
+
+create table public.lotes_minerio (
+id SERIAL primary key,
+codigo_lote 	VARCHAR(50) not null,
+mina_origem 	VARCHAR(120) not null,
+teor_fe 		NUMERIC(5,2) not null,  -- 0 a 100 (%)
+umidade 		NUMERIC(5,2) not null,  -- 0 a 100 (%)
+sio2 			NUMERIC(5,2),			-- opicional
+p 				NUMERIC(5,3),			-- opicional
+toneladas 		NUMERIC(12,3) not null, -- até bilhões com 3 casas
+data_producao	TIMESTAMP not null,	-- data/hora com fuso
+status 			INTEGER not null,		-- 0 EmEstoque, 1 EmTransporte, 2 Embarcado
+localizacao_atual VARCHAR(200) not null 
+);
+
+create unique index ux_lotes_minerio_codigo_lote
+	on public.lotes_minerio (codigo_lote);
+
+alter table public.lotes.minerio
+		add constraint chk_teor_fe_percent check (teor_fe >= 0 and teor_fe <= 100),
+		add constraint chk_umidade_percent check (umidade >= 0 and umidade <= 100),
+		add constraint chk_toneladas_pos check (toneladas > 0),
+		add constraint chk_status_enum check (status in (0, 1, 2));
+
+insert into public.lotes.minerio
+(codigo_lote, mina_origem, teor_fe, umidade, sio2, p, toneladas, data_producao, status, localizacao_atual)
+values
+('MNA-2026-00123', 'Carajás N4E', '64.50 6.20)
