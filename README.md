@@ -25,3 +25,7 @@ Repositório dos exercícios do treinamento de .NET da Deloitte no Porto Digital
 - SOLID
 ### Dia 5:
 - Criação de documentação de projetos 📄
+### Dia 6:
+- Uso do DBeaver + Docker com APIs
+### Dia 7:
+- Conexão com Banco de dados e uso de metodos POST/GET

@@ -1,31 +1,41 @@
-create schema if not exist public;
+-- Schema padrão (apenas para garantir)
+CREATE SCHEMA IF NOT EXISTS public;
 
-drop table if exists public.lotes.minerio cascade;
+-- Tabela principal: lotes_minerio
+DROP TABLE IF EXISTS public.lotes_minerio CASCADE;
 
-create table public.lotes_minerio (
-id SERIAL primary key,
-codigo_lote 	VARCHAR(50) not null,
-mina_origem 	VARCHAR(120) not null,
-teor_fe 		NUMERIC(5,2) not null,  -- 0 a 100 (%)
-umidade 		NUMERIC(5,2) not null,  -- 0 a 100 (%)
-sio2 			NUMERIC(5,2),			-- opicional
-p 				NUMERIC(5,3),			-- opicional
-toneladas 		NUMERIC(12,3) not null, -- até bilhões com 3 casas
-data_producao	TIMESTAMP not null,	-- data/hora com fuso
-status 			INTEGER not null,		-- 0 EmEstoque, 1 EmTransporte, 2 Embarcado
-localizacao_atual VARCHAR(200) not null 
+CREATE TABLE public.lotes_minerio (
+    id               SERIAL PRIMARY KEY,
+    codigo_lote      VARCHAR(50) NOT NULL,
+    mina_origem      VARCHAR(120) NOT NULL,
+    teor_fe          NUMERIC(5,2) NOT NULL,       -- 0 a 100 (%)
+    umidade          NUMERIC(5,2) NOT NULL,       -- 0 a 100 (%)
+    sio2             NUMERIC(5,2),                -- opcional
+    p                NUMERIC(5,3),                -- opcional (fósforo)
+    toneladas        NUMERIC(12,3) NOT NULL,      -- até bilhões com 3 casas
+    data_producao    TIMESTAMPTZ NOT NULL,        -- data/hora com fuso
+    status           INTEGER NOT NULL,            -- 0 EmEstoque, 1 EmTransporte, 2 Embarcado
+    localizacao_atual VARCHAR(200) NOT NULL
 );
 
-create unique index ux_lotes_minerio_codigo_lote
-	on public.lotes_minerio (codigo_lote);
+-- Índice único para rastreabilidade do lote
+CREATE UNIQUE INDEX ux_lotes_minerio_codigo_lote
+    ON public.lotes_minerio (codigo_lote);
 
-alter table public.lotes.minerio
-		add constraint chk_teor_fe_percent check (teor_fe >= 0 and teor_fe <= 100),
-		add constraint chk_umidade_percent check (umidade >= 0 and umidade <= 100),
-		add constraint chk_toneladas_pos check (toneladas > 0),
-		add constraint chk_status_enum check (status in (0, 1, 2));
+-- (Opcional) Restrições de domínio simples
+ALTER TABLE public.lotes_minerio
+    ADD CONSTRAINT chk_teor_fe_percent CHECK (teor_fe >= 0 AND teor_fe <= 100),
+    ADD CONSTRAINT chk_umidade_percent CHECK (umidade >= 0 AND umidade <= 100),
+    ADD CONSTRAINT chk_toneladas_pos CHECK (toneladas > 0),
+    ADD CONSTRAINT chk_status_enum CHECK (status IN (0, 1, 2));
 
-insert into public.lotes.minerio
+-- Dados de exemplo para consulta e testes
+INSERT INTO public.lotes_minerio
 (codigo_lote, mina_origem, teor_fe, umidade, sio2, p, toneladas, data_producao, status, localizacao_atual)
-values
-('MNA-2026-00123', 'Carajás N4E', '64.50 6.20)
+VALUES
+('MNA-2026-000123', 'Carajás N4E', 64.50, 6.20, 2.10, 0.045, 3200.500, NOW() - INTERVAL '2 days', 0, 'Pátio Carajás'),
+('MNA-2026-000124', 'Carajás N5S', 62.30, 7.10, 3.00, 0.050, 2800.000, NOW() - INTERVAL '1 day', 1, 'EFVM - Trem 123'),
+('MNA-2026-000125', 'Itabira',     65.10, 5.80, 1.90, 0.038, 3500.750, NOW(),                    2, 'Porto Tubarão');
+
+-- Consulta rápida para conferir
+SELECT * FROM public.lotes_minerio ORDER BY id;

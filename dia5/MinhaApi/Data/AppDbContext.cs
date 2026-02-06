@@ -17,7 +17,8 @@ namespace MinhaApi.Data
             {
                 e.ToTable("lotes_minerio");
 
-                e.HasKey(x => x.Id);
+                //e.HasKey(x => x.Id);
+                e.Property(x => x.Id).HasColumnName("id");
 
                 e.Property(x => x.CodigoLote)
                     .HasMaxLength(50)

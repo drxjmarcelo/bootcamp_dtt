@@ -62,5 +62,12 @@ namespace MinhaApi.Controllers
             var lote = await _db.LotesMinerio.FindAsync(id);
             return lote is null ? NotFound() : Ok(lote);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var lote = await _db.LotesMinerio.ToListAsync();
+            return Ok(lote);
+        }
     }
 }
