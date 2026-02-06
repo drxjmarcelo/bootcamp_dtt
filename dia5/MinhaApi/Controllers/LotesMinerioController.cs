@@ -14,27 +14,28 @@ namespace MinhaApi.Controllers
 
         public LotesMinerioController(AppDbContext db) => _db = db;
 
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var lotes = await _db.LotesMinerio.ToListAsync();
+            return Ok(lotes);
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var lote = await _db.LotesMinerio.FindAsync(id);
+            return lote is null ? NotFound() : Ok(lote);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateLoteMinerioDto input)
         {
-            if (string.IsNullOrWhiteSpace(input.CodigoLote))
-                return BadRequest("CodigoLote é obrigatório.");
-            if (string.IsNullOrWhiteSpace(input.MinaOrigem))
-                return BadRequest("MinaOrigem é obrigatória.");
-            if (string.IsNullOrWhiteSpace(input.LocalizacaoAtual))
-                return BadRequest("LocalizacaoAtual é obrigatória.");
-            if (input.TeorFe is < 0 or > 100)
-                return BadRequest("TeorFe deve estar entre 0 e 100 (%).");
-            if (input.Umidade is < 0 or > 100)
-                return BadRequest("Umidade deve estar entre 0 e 100 (%).");
-            if (input.Toneladas <= 0)
-                return BadRequest("Toneladas deve ser > 0.");
-            if (input.Status is < 0 or > 2)
-                return BadRequest("Status inválido (use 0, 1 ou 2).");
-
+            // Validações básicas
+            if (input.TeorFe is < 0 or > 100) return BadRequest("TeorFe inválido.");
+            
             var exists = await _db.LotesMinerio.AnyAsync(x => x.CodigoLote == input.CodigoLote);
-            if (exists)
-                return Conflict($"Já existe um lote com CodigoLote '{input.CodigoLote}'.");
+            if (exists) return Conflict("Código de lote já existe.");
 
             var lote = new LoteMinerio
             {
@@ -45,7 +46,10 @@ namespace MinhaApi.Controllers
                 SiO2 = input.SiO2,
                 P = input.P,
                 Toneladas = input.Toneladas,
-                DataProducao = input.DataProducao ?? DateTime.UtcNow,
+                // Garante que a data seja UTC para o PostgreSQL
+                DataProducao = input.DataProducao.HasValue 
+                    ? DateTime.SpecifyKind(input.DataProducao.Value, DateTimeKind.Utc) 
+                    : DateTime.UtcNow,
                 Status = (StatusLote)input.Status,
                 LocalizacaoAtual = input.LocalizacaoAtual
             };
@@ -54,20 +58,6 @@ namespace MinhaApi.Controllers
             await _db.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetById), new { id = lote.Id }, lote);
-        }
-
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            var lote = await _db.LotesMinerio.FindAsync(id);
-            return lote is null ? NotFound() : Ok(lote);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            var lote = await _db.LotesMinerio.ToListAsync();
-            return Ok(lote);
         }
     }
 }
