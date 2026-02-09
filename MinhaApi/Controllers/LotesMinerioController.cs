@@ -14,6 +14,7 @@ namespace MinhaApi.Controllers
 
         public LotesMinerioController(AppDbContext db) => _db = db;
 
+        // ================= POST =================
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateLoteMinerioDto input)
         {
@@ -30,7 +31,6 @@ namespace MinhaApi.Controllers
             if (input.Toneladas <= 0)
                 return BadRequest("Toneladas deve ser > 0.");
             if (input.Status is < 0 or > 2)
-            
                 return BadRequest("Status inválido (use 0, 1 ou 2).");
 
             var exists = await _db.LotesMinerio.AnyAsync(x => x.CodigoLote == input.CodigoLote);
@@ -57,13 +57,15 @@ namespace MinhaApi.Controllers
             return CreatedAtAction(nameof(GetById), new { id = lote.Id }, lote);
         }
 
+        // ================= GET BY ID =================
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
             var lote = await _db.LotesMinerio.FindAsync(id);
             return lote is null ? NotFound() : Ok(lote);
         }
-        
+
+        // ================= GET ALL =================
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -71,10 +73,86 @@ namespace MinhaApi.Controllers
             return Ok(lotes);
         }
 
-        /*[HttpPut]
-        public async Task<IActionResult> Put()
+        // ================= PUT (UPDATE COMPLETO) =================
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, [FromBody] CreateLoteMinerioDto input)
         {
-            
-        }*/
+            var lote = await _db.LotesMinerio.FindAsync(id);
+            if (lote is null)
+                return NotFound();
+
+            // mesmas validações do POST
+            if (string.IsNullOrWhiteSpace(input.CodigoLote))
+                return BadRequest("CodigoLote é obrigatório.");
+            if (string.IsNullOrWhiteSpace(input.MinaOrigem))
+                return BadRequest("MinaOrigem é obrigatória.");
+            if (string.IsNullOrWhiteSpace(input.LocalizacaoAtual))
+                return BadRequest("LocalizacaoAtual é obrigatória.");
+            if (input.TeorFe is < 0 or > 100)
+                return BadRequest("TeorFe deve estar entre 0 e 100.");
+            if (input.Umidade is < 0 or > 100)
+                return BadRequest("Umidade deve estar entre 0 e 100.");
+            if (input.Toneladas <= 0)
+                return BadRequest("Toneladas deve ser > 0.");
+
+            // update
+            lote.CodigoLote = input.CodigoLote;
+            lote.MinaOrigem = input.MinaOrigem;
+            lote.TeorFe = input.TeorFe;
+            lote.Umidade = input.Umidade;
+            lote.SiO2 = input.SiO2;
+            lote.P = input.P;
+            lote.Toneladas = input.Toneladas;
+            lote.DataProducao = input.DataProducao ?? lote.DataProducao;
+            lote.Status = (StatusLote)input.Status;
+            lote.LocalizacaoAtual = input.LocalizacaoAtual;
+
+            await _db.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        // ================= PATCH (UPDATE PARCIAL) =================
+        [HttpPatch("{id:int}")]
+        public async Task<IActionResult> Patch(int id, [FromBody] CreateLoteMinerioDto input)
+        {
+            var lote = await _db.LotesMinerio.FindAsync(id);
+            if (lote is null)
+                return NotFound();
+
+            if (!string.IsNullOrWhiteSpace(input.CodigoLote))
+                lote.CodigoLote = input.CodigoLote;
+
+            if (!string.IsNullOrWhiteSpace(input.MinaOrigem))
+                lote.MinaOrigem = input.MinaOrigem;
+
+            if (input.TeorFe is >= 0 and <= 100)
+                lote.TeorFe = input.TeorFe;
+
+            if (input.Umidade is >= 0 and <= 100)
+                lote.Umidade = input.Umidade;
+
+            if (input.SiO2.HasValue)
+                lote.SiO2 = input.SiO2;
+
+            if (input.P.HasValue)
+                lote.P = input.P;
+
+            if (input.Toneladas > 0)
+                lote.Toneladas = input.Toneladas;
+
+            if (input.DataProducao.HasValue)
+                lote.DataProducao = input.DataProducao.Value;
+
+            if (input.Status is >= 0 and <= 2)
+                lote.Status = (StatusLote)input.Status;
+
+            if (!string.IsNullOrWhiteSpace(input.LocalizacaoAtual))
+                lote.LocalizacaoAtual = input.LocalizacaoAtual;
+
+            await _db.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
