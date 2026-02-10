@@ -1,15 +1,19 @@
-namespace MinhaApi.Dtos;
 
-public class LoteMinerioResponseDto
+using MinhaApi.Models;
+
+namespace MinhaApi.Dtos
 {
-    public string CodigoLote { get; set; } = string.Empty;
-    public string MinaOrigem { get; set; } = string.Empty;
-    public double TeorFe { get; set; }
-    public double Umidade { get; set; }
-    public double SiO2 { get; set; }
-    public double P { get; set; }
-    public decimal Toneladas { get; set; }
-    public DateTime DataProducao { get; set; }
-    public int Status { get; set; }
-    public string LocalizacaoAtual { get; set; } = string.Empty;
+    public record LoteMinerioResponseDto(
+        int Id,
+        string CodigoLote,
+        string MinaOrigem,
+        decimal TeorFe,
+        decimal Umidade,
+        decimal? SiO2,
+        decimal? P,
+        decimal Toneladas,
+        DateTime DataProducao,      
+        StatusLote Status,
+        string LocalizacaoAtual
+    );
 }

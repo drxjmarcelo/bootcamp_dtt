@@ -48,11 +48,11 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.Testing": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[10.0.2, )"
             },
-            "Microsoft.EntityFrameworkCore.InMemory": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[10.0.2, )"
             },
@@ -60,9 +60,15 @@
               "target": "Package",
               "version": "[17.14.1, )"
             },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "Xunit.SkippableFact": {
+              "target": "Package",
+              "version": "[1.5.61, )"
+            },
             "coverlet.collector": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.4, )"
             },
@@ -411,13 +417,13 @@
           "dependencies": {
             "EFCore.NamingConventions": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.*, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[10.0.2, )"
             },
-            "Microsoft.EntityFrameworkCore.InMemory": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[10.0.2, )"
             },
@@ -429,7 +435,11 @@
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
-              "version": "[10.0.0, )"
+              "version": "[10.*, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.10.14, )"
             }
           },
           "imports": [

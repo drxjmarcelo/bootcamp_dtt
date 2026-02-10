@@ -1,26 +1,47 @@
 using Microsoft.EntityFrameworkCore;
 using MinhaApi.Data; 
+using StackExchange.Redis;
+using MinhaApi.Queue;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
+
+// Registro do DbContext com Npgsql
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    var cs = builder.Configuration.GetConnectionString("DefaultConnection"); 
+    options
+        .UseNpgsql(cs)
+        .UseSnakeCaseNamingConvention();
+});
+
+
+// Recomendação do Npgsql para compatibilidade de timestamp (se aplicável)
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 builder.Services.AddControllers();
 
-// Registrar Postgres APENAS fora do ambiente de teste
-if (!builder.Environment.IsEnvironment("Test"))
+
+// Redis ConnectionMultiplexer como Singleton
+builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
 {
-    builder.Services.AddDbContext<AppDbContext>(options =>
-    {
-        var cs = "Host=localhost;Port=5433;Database=minhaapi_db;Username=postgres;Password=postgres";
+    var cs = builder.Configuration["Redis:ConnectionString"]!;
+    return ConnectionMultiplexer.Connect(cs);
+});
 
-        options
-            .UseNpgsql(cs)
-            .UseSnakeCaseNamingConvention();
-    });
 
-    // Compatibilidade timestamp Npgsql
-    AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-}
+// Options da fila
+builder.Services.Configure<RedisQueueOptions>(builder.Configuration.GetSection("Redis"));
+
+// Producer (para enfileirar)
+builder.Services.AddSingleton<ILoteQueueProducer, LoteQueueProducer>();
+
+// Worker/Consumer (para processar)
+builder.Services.AddHostedService<LoteQueueWorker>();
+
 
 var app = builder.Build();
 
@@ -31,6 +52,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Mapear controllers
 app.MapControllers();
 
 app.Run();

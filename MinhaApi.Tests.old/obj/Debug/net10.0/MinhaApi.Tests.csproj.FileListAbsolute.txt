@@ -1,0 +1,9 @@
+C:\Users\aluno\Desktop\bootcamp_dtt\MinhaApi.Tests\bin\Debug\net10.0\.msCoverageSourceRootsMapping_MinhaApi.Tests
+C:\Users\aluno\Desktop\bootcamp_dtt\MinhaApi.Tests\bin\Debug\net10.0\CoverletSourceRootsMapping_MinhaApi.Tests
+C:\Users\aluno\Desktop\bootcamp_dtt\MinhaApi.Tests\obj\Debug\net10.0\MinhaApi.Tests.csproj.AssemblyReference.cache
+C:\Users\aluno\Desktop\bootcamp_dtt\MinhaApi.Tests\obj\Debug\net10.0\MvcTestingAppManifest.json
+C:\Users\aluno\Desktop\bootcamp_dtt\MinhaApi.Tests\obj\Debug\net10.0\MinhaApi.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aluno\Desktop\bootcamp_dtt\MinhaApi.Tests\obj\Debug\net10.0\MinhaApi.Tests.AssemblyInfoInputs.cache
+C:\Users\aluno\Desktop\bootcamp_dtt\MinhaApi.Tests\obj\Debug\net10.0\MinhaApi.Tests.AssemblyInfo.cs
+C:\Users\aluno\Desktop\bootcamp_dtt\MinhaApi.Tests\obj\Debug\net10.0\MinhaApi.Tests.csproj.CoreCompileInputs.cache
+C:\Users\aluno\Desktop\bootcamp_dtt\MinhaApi.Tests\obj\Debug\net10.0\MinhaApi.Tests.sourcelink.json
