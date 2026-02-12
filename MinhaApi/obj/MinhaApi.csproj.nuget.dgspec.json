@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aluno\\Desktop\\bootcamp_dtt\\MinhaApi\\MinhaApi.csproj": {}
+    "C:\\Users\\Russo\\Desktop\\bootcamp_dtt\\MinhaApi\\MinhaApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aluno\\Desktop\\bootcamp_dtt\\MinhaApi\\MinhaApi.csproj": {
+    "C:\\Users\\Russo\\Desktop\\bootcamp_dtt\\MinhaApi\\MinhaApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aluno\\Desktop\\bootcamp_dtt\\MinhaApi\\MinhaApi.csproj",
+        "projectUniqueName": "C:\\Users\\Russo\\Desktop\\bootcamp_dtt\\MinhaApi\\MinhaApi.csproj",
         "projectName": "MinhaApi",
-        "projectPath": "C:\\Users\\aluno\\Desktop\\bootcamp_dtt\\MinhaApi\\MinhaApi.csproj",
-        "packagesPath": "C:\\Users\\aluno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aluno\\Desktop\\bootcamp_dtt\\MinhaApi\\obj\\",
+        "projectPath": "C:\\Users\\Russo\\Desktop\\bootcamp_dtt\\MinhaApi\\MinhaApi.csproj",
+        "packagesPath": "C:\\Users\\Russo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Russo\\Desktop\\bootcamp_dtt\\MinhaApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\aluno\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Russo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -90,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
