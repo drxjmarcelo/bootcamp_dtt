@@ -9,6 +9,8 @@ namespace MinhaApi.Models
 
     public class LoteMinerio
     {
+        public List<HistoricoMovimentacao> Historico { get; set; } = new();
+
         public int Id { get; set; }
 
         // Identificação e rastreio
